@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
 import geekbarains.material.R
-import kotlinx.android.synthetic.main.fragment_chips.*
+import kotlinx.android.synthetic.main.fragment_settings.*
+
 
 class SettingsFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+navigation
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -27,22 +28,17 @@ class SettingsFragment : Fragment() {
         chipGroup.setOnCheckedChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position)?.let {
                 Toast.makeText(context, "Выбран ${it.text}", Toast.LENGTH_SHORT).show()
-                if (it.text == getString(R.string.theme1)){
-                    activity?.setTheme(R.style.PinkTheme)
-                }
-                else{
-                    activity?.setTheme(R.style.IndigoTheme)
-                }
-                activity?.recreate()
+
             }
         }
 
         chip_close.setOnCloseIconClickListener {
             Toast.makeText(
-                    context,
-                    "Close is Clicked",
-                    Toast.LENGTH_SHORT
+                context,
+                "Close is Clicked",
+                Toast.LENGTH_SHORT
             ).show()
         }
     }
 }
+
