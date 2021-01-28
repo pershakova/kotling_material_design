@@ -6,4 +6,14 @@
     <color name="colorAccent40Alfa">#662962FF</color>
     <color name="color_gray">#66000000</color>
     <color name="background">#FAFAFA</color>
+    <color name="indigo">#4B0082</color>
+    <color name="indigo_light">#EE63F5</color>
+    <color name="black">#000000</color>
+    <color name="gray">#635E5E</color>
+    <color name="green">#008577</color>
+    <color name="light_gray">#00574B</color>
+    <color name="pink">#D81B60</color>
+    <color name="pink_dark">#66000000</color>
+    <color name="pinkLight">#008577</color>
+    <color name="indigo_dark">#542D56</color>
 </resources>

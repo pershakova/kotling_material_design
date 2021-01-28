@@ -117,11 +117,14 @@
                 android:layout_height="wrap_content"
                 android:text="Choice A" />
 
+
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="Choice B" />
+
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -387,3 +390,4 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+
