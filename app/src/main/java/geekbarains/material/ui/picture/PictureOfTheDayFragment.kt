@@ -3,7 +3,9 @@ package geekbarains.material.ui.picture
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.*
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +20,8 @@ import geekbarains.material.R
 import geekbarains.material.ui.MainActivity
 import geekbarains.material.ui.api.ApiActivity
 import geekbarains.material.ui.apibottom.ApiBottomActivity
-import geekbarains.material.ui.chips.ChipsFragment
 import geekbarains.material.ui.settings.SettingsFragment
+import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class PictureOfTheDayFragment : Fragment() {
@@ -27,6 +29,9 @@ class PictureOfTheDayFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var textViewTitle: TextView
     private lateinit var textViewDescription: TextView
+    private lateinit var bottom: TextView
+    private var isExpanded = false
+
 
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProviders.of(this).get(PictureOfTheDayViewModel::class.java)
@@ -57,6 +62,19 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
         setBottomAppBar(view)
+        bottom = view.findViewById(R.id.bottom_sheet_description_header)
+        bottom.setOnClickListener {
+            val transition = ChangeBounds()
+
+            transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+            transition.duration = 1200
+            android.transition.TransitionManager.beginDelayedTransition(bottom_sheet_container, transition)
+
+            isExpanded  = !isExpanded
+
+            val behavior = BottomSheetBehavior.from<View>(bottom_sheet_container)
+            behavior.peekHeight = if (isExpanded ) resources.getDimension(R.dimen.bottom_start).toInt() else resources.getDimension(R.dimen.bottom_end).toInt()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
