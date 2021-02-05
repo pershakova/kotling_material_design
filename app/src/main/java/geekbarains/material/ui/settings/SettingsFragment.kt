@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 class SettingsFragment : Fragment() {
 
     override fun onCreateView(
-navigation
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
