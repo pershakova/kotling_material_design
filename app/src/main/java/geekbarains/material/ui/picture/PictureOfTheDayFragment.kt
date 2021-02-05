@@ -1,6 +1,7 @@
 package geekbarains.material.ui.picture
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -56,6 +57,11 @@ class PictureOfTheDayFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${input_edit_text.text.toString()}")
             })
         }
+
+        activity?.let {
+            textViewDescription.typeface = Typeface.createFromAsset(it.assets, "grobold.ttf")
+      }
+
         setBottomAppBar(view)
     }
 
